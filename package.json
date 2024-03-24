@@ -1,0 +1,19 @@
+{
+  "name": "measurement-generator-1brc",
+  "version": "1.0.0",
+  "description": "generates the 1 billoin row file according to the 1brc challenge guidelines",
+  "main": "genWithThreads.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/superbrobenji/1brc-measurements-generator.git"
+  },
+  "author": "Benjamin Swanepoel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/superbrobenji/1brc-measurements-generator/issues"
+  },
+  "homepage": "https://github.com/superbrobenji/1brc-measurements-generator#readme"
+}
