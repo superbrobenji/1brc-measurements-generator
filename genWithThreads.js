@@ -23,7 +23,6 @@ if (isMainThread) {
         if (Math.random() < 0.5) word += getRandomElement(['ing', 'ed', 'ly', 'es', 's', 'er', 'able', 'ible', 'ive', 'ness']);
         stations[i] = word
     }
-    console.log(stations)
     const threads = new Set();
     const threadCount = os.cpus().length;
     const range = Math.floor(maxMeasurements / threadCount);
