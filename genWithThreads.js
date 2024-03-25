@@ -30,10 +30,6 @@ if (isMainThread) {
     for (let i = 0; i < threadCount - 1; i++) {
         threads.add(new Worker(__filename, { workerData: { range, stations: stations } }));
     }
-    console.log('maxMeasurements', maxMeasurements)
-    console.log('lines per thread', range)
-    console.log('threads', threadCount)
-    console.log('remainder lines', range + ((maxMeasurements) % threadCount))
     threads.add(new Worker(__filename, { workerData: { range: range + ((maxMeasurements) % threadCount), stations: stations } }));
     for (let worker of threads) {
         worker.on('error', (err) => { throw err; });
@@ -54,10 +50,8 @@ if (isMainThread) {
         const adjustedLines = Math.min(remainingLines, linesPerWrite);
         for (let i = 0; i < adjustedLines; i++) {
             const word = workerData.stations[Math.floor(Math.random() * workerData.stations.length)];
-            console.log(word, Math.floor(Math.random() * workerData.stations.length))
             const temperature = (Math.random() * (199.8) - 99.9).toFixed(1);
             measurements += `${word};${temperature}\n`;
-            console.log(measurements)
         }
         fs.appendFileSync('measurements.txt', measurements, (err) => {
             if (err) throw err;
