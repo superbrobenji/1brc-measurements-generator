@@ -7,7 +7,8 @@
         "minify": "npx jsmin <./genWithThreads.js > run.min.js",
         "gen": "node run.min.js",
         "test": "npm run minify && npm run gen",
-        "bench": "npm run minify && node bench.js"
+        "bench": "npm run minify && node bench.js",
+        "graph": "npx parcel index.html"
     },
     "repository": {
         "type": "git",
