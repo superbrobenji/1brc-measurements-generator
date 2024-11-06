@@ -1,5 +1,8 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
+bench_results.json
 measurements.txt
+run.min.js
+.parcel-cache
 # compiled output
 dist
 tmp

@@ -1,14 +1,15 @@
 "use strict";
+const startTime = performance.now();
 const fs = require("fs");
 const os = require("os");
 const { Worker, isMainThread, workerData } = require("worker_threads");
 
 if (isMainThread) {
+    console.log("Generating file. File size is roughly 11.7Gb. Please wait...");
     if (fs.existsSync("measurements.txt")) {
         fs.unlinkSync("measurements.txt");
     }
 
-    const startTime = performance.now();
     const maxMeasurements = 1000000000;
     const maxStations = 10000;
     const getRandomElement = (array) =>
@@ -109,9 +110,7 @@ if (isMainThread) {
         worker.on("exit", () => {
             threads.delete(worker);
             if (threads.size === 0) {
-                console.log(
-                    `Time taken to execute add function is ${(performance.now() - startTime) / 1000}s.`,
-                );
+                process.send(performance.now() - startTime);
                 return;
             }
         });
